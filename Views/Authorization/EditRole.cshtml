@@ -1,0 +1,46 @@
+﻿@model myfirstnetcoreapp.Views.Home.ViewModels.EditRoleModel
+
+@{
+    ViewBag.Title = "Edit Role";
+}
+
+<h2>Edit Role</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="RoleId" />
+    <label asp-for="RoleId"></label>
+    <input asp-for="RoleId" disabled />
+    <br />
+    <br />
+
+    <label asp-for="RoleName"></label>
+    <input asp-for="RoleName" />
+    <br />
+    <br />
+
+    <input type="submit" value="Update" class="btn btn-primary" />
+    <a asp-action="ListRoles" asp-controller="Authorization">Cancel</a>
+    <br />
+    <br />
+
+</form>
+    <h3>Users in this role are</h3>
+
+@if (Model.users.Any()) { 
+    @foreach (var user in Model.users)
+    {
+        <label asp-for="@user"></label>
+        <br />
+        
+    }
+}
+            else
+            {
+                <h3>None At the moment</h3>
+
+                <a asp-action="AddRemoveUsersToRole" asp-controller="Authorization" asp-route-roleId="@Model.RoleId">
+                    AddOrRemoveUserstoThisRole
+                </a>
+            }
+
+@section Scripts{ }

@@ -1,0 +1,41 @@
+﻿@model myfirstnetcoreapp.Models.Employee
+
+@{ 
+   
+    ViewBag.Title = "Employee Details";
+}
+
+<h1 id="idh">Employee Details</h1>
+
+    @{ 
+        //  var employee = ViewBag.Employee as myfirstnetcoreapp.Models.Employee;
+       var photoPath = "~/images/" + (Model.FilePath ?? "1.jpg");
+    }
+    <table>
+        <tr>
+            <td>Employee Id </td>
+            <td>@Model.Id</td>
+        </tr>
+        <tr>
+            <td>Employee Name </td>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <td>Employee Email </td>
+            <td>@Model.Email</td>
+        </tr>
+        <tr>
+            <td>Employee Department </td>
+            <td>@Model.Department</td>
+        </tr>
+        <tr>
+            <td>Employee Photo</td>
+            <td>@Model.FilePath</td>
+        </tr>
+    </table>
+
+    @Html.ActionLink("BacktoIndex", "Index")
+@section Scripts{
+
+
+}

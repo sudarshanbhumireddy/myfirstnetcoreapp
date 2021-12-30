@@ -1,0 +1,30 @@
+﻿@model IEnumerable<IdentityRole>
+
+@{
+    ViewBag.Title = "List Roles";
+}
+
+<h1>List of All Roles</h1>
+
+
+@if (Model.Any())
+{
+
+    @foreach (var role in Model)
+    {
+        <h2>Role Id : @role.Id</h2>
+        <h2>Role Name : @role.Name</h2>
+        @Html.ActionLink("EditRole", "EditRole", "Authorization", new { id = role.Id })
+        <hr />
+    }
+}
+else
+{
+    <h3>No roles exist please click below button to create roles</h3>
+    <a asp-action="CreateIdentityRole" asp-controller="Authorization">Create Role</a>
+}
+
+
+@section Scripts{
+
+}

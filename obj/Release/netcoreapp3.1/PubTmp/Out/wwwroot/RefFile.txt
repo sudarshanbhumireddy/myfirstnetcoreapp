@@ -1,0 +1,15 @@
+﻿app.Use(async (context, next) => {
+                // await context.Response.WriteAsync(System.Diagnostics.Process.GetCurrentProcess().ProcessName+" "+this.Configuration["myKey"])
+                await context.Response.WriteAsync("Hello from 1st middleware");
+                logger.LogInformation("MW1 incoming message");
+                await next();
+                logger.LogInformation("MW1 outgoing message");
+             
+            }) ;
+
+            app.Use(async (context,next)=> {
+                logger.LogInformation("MW2 incoming message");
+                await next();
+                logger.LogInformation("MW2 outgoing message");
+            }
+          ) ;

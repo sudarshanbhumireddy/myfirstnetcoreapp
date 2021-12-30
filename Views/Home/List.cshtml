@@ -1,0 +1,51 @@
+﻿@model IEnumerable<myfirstnetcoreapp.Models.Employee>
+
+
+@{
+
+    ViewBag.Title = "Employee List";
+}
+
+<table style="border:2px solid black; font-family:Arial; ">
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>FilePath</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+    </thead>
+    @foreach (var emp in Model)
+    {
+        var filepath = "/images/" + (emp.FilePath ?? "car.png");
+        <tbody>
+            <tr>
+                <td>@emp.Name</td>
+                <td>@emp.Email</td>
+                <td>@emp.Department</td>
+                <td><img src="@filepath" alt="image" style="width:75px;height:60px" /></td>
+                <td> @Html.ActionLink("Edit", "Edit", new { Id = emp.Id })</td>
+                <td> @Html.ActionLink("View", "Details", new { Id = emp.Id })</td>
+            </tr>
+
+
+        </tbody>
+       
+    }
+</table>
+  
+
+@section Scripts {
+
+}
+
+    <!--<img src="~/Images/car2.jfif" alt="car" asp-append-version="true" />-->
+    @*<td>@Html.ActionLink("Details", "Details", new { Id =emp.Id })</td>
+        <td> <a href="/home/Details/@emp.Id"></a>
+         <a href="/Home/Details/@emp.Id">View</a></td>*@
+
+    @*@<td><a asp-controller="Home" asp-action="Details" asp-route-id="@emp.Id"></a>View</td>*@
+    <!--<td><a asp-controller="Home" asp-action="Details" asp-route-id="emp.Id">Display </a></td>-->
